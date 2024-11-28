@@ -1,0 +1,7 @@
+<div class="card" *ngFor="let message of messages" (click)="selectMessage(message)">
+    <div class="card-body">
+        {{ message.content }}
+    </div>
+</div>
+<app-message-details *ngIf="selectedMessage" [message]="selectedMessage" (close)="closeDetails()"></app-message-details>
+  

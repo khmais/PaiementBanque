@@ -1,0 +1,48 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>Alias</th>
+        <th>Type</th>
+        <th>Direction</th>
+        <th>Application</th>
+        <th>Processed Flow Type</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let partner of partners">
+        <td>{{ partner.alias }}</td>
+        <td>{{ partner.type }}</td>
+        <td>{{ partner.direction }}</td>
+        <td>{{ partner.application }}</td>
+        <td>{{ partner.processedFlowType }}</td>
+        <td>{{ partner.description }}</td>
+        <td>
+          <button class="btn btn-danger" (click)="removePartner(partner.id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Form to add a new partner -->
+  <div class="form-group">
+    <input [(ngModel)]="newPartner.alias" type="text" class="form-control mb-3" placeholder="Alias" required>
+    <input [(ngModel)]="newPartner.type" type="text" class="form-control mb-3" placeholder="Type" required>
+    <select [(ngModel)]="newPartner.direction" class="form-control mb-3" required>
+      <option value="" disabled selected>Direction</option>
+      <option value="INBOUND">INBOUND</option>
+      <option value="OUTBOUND">OUTBOUND</option>
+    </select>
+    <input [(ngModel)]="newPartner.application" type="text" class="form-control mb-3" placeholder="Application">
+    <select [(ngModel)]="newPartner.processedFlowType" class="form-control mb-3" required>
+      <option value="" disabled selected>Processed Flow Type</option>
+      <option value="MESSAGE">MESSAGE</option>
+      <option value="ALERTING">ALERTING</option>
+      <option value="NOTIFICATION">NOTIFICATION</option>
+    </select>
+    <input [(ngModel)]="newPartner.description" type="text" class="form-control mb-3" placeholder="Description" required>
+    <button class="btn btn-primary mt-2" (click)="addPartner()">Ajouter Partenaire</button>
+</div>
+
+  
